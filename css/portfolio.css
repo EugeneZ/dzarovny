@@ -1,0 +1,39 @@
+/* The 'js' class is added to the body after the DOM is ready by Javascript */
+body.js { overflow: hidden; }
+
+body.js #navWrapper nav > ul { display: block; opacity: 0; }
+body.js #navWrapper nav > ul ul { display: block; }
+
+body.js #main { margin-left: 2000px; margin-top: 2000px; position: absolute; }
+
+body.js #main h1,
+body.js #main h2,
+body.js #main h3,
+body.js #main p { display: none;}
+
+body.js #main img { opacity: 0.25; }
+body.js #main li.active img { opacity: 1; }
+
+/*body.js #main #portfolio { position: relative; }
+body.js #main ul li ul li { display: none; position: absolute; width: 98%; }*/ /* 1% left and right margin + 98% = 100% */
+
+/* We'll make this work later */
+body.js iframe { display: none; }
+
+/* Fading sides 
+   IMPORTANT
+   If you change the width, change the corresponding vlaues in core.js that rely on them */
+div.fader { position: fixed;  }
+div.fader.top    { top: 0; left: 0; right: 0; background: url('../images/fade-t.png') transparent repeat-x bottom; height: 260px; }
+div.fader.right  { right: 0; top: 0; bottom: 0; background: url('../images/fade-r.png') transparent repeat-y left; width: 260px; }
+div.fader.bottom { bottom: 0; left: 0; right: 0; background: url('../images/fade-b.png') transparent repeat-x top; height: 260px;  }
+div.fader.left   { left: 0; top: 0; bottom: 0; background: url('../images/fade-l.png') transparent repeat-y right; width: 260px; }
+
+div.fader div { position: absolute; background-color: #fff; }
+div.fader.top div { top: 0; left: 0; right: 0; height: 100px; }
+div.fader.right div { right: 0; top: 0; bottom: 0; width: 100px; }
+div.fader.bottom div { bottom: 0; left: 0; right: 0; height: 100px; }
+div.fader.left div { left: 0; top: 0; bottom: 0; width: 100px; }
+
+.zoomOut { max-width: 95%; margin: 2.5%; }
+.zoomNormal { max-width: 100%; margin: 0%; }
