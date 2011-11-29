@@ -1,5 +1,5 @@
 // hide semantic elements we don't want when the JS is on
-window.addEvent('domready', function(){
+window.addEvent('load', function(){
 	// enable js-only CSS
 	document.getElement('body').addClass('js');
 	
