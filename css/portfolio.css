@@ -11,9 +11,6 @@ body.js #main h2,
 body.js #main h3,
 body.js #main p { display: none;}
 
-body.js #main img { opacity: 0.25; }
-body.js #main li.active img { opacity: 1; }
-
 /*body.js #main #portfolio { position: relative; }
 body.js #main ul li ul li { display: none; position: absolute; width: 98%; }*/ /* 1% left and right margin + 98% = 100% */
 
