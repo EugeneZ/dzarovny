@@ -37,3 +37,5 @@ div.fader.left div { left: 0; top: 0; bottom: 0; width: 100px; }
 
 .zoomOut { max-width: 95%; margin: 2.5%; }
 .zoomNormal { max-width: 100%; margin: 0%; }
+
+body.js #navWrapper a span.percent { display: inline-block; margin-right: 5px; } 
