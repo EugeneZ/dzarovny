@@ -17,6 +17,7 @@ var DZarovny = {
 		DZarovny.loaded = true;
 		DZarovny.initNav();
 		DZarovny.removeProgress();
+		DZarovny.portfolio.configureMargins();
 	},
 	
 	resize: function(){
@@ -24,7 +25,7 @@ var DZarovny = {
 		DZarovny.portfolio.setCache();
 		DZarovny.portfolio.configureMargins();
 		if (DZarovny.portfolio.active){
-			DZarovny.portfolio.goto(DZarovny.portfolio.find(DZarovny.portfolio.active));
+			DZarovny.portfolio.go(DZarovny.portfolio.active);
 		}
 	},
 	
