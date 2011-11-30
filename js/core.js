@@ -61,11 +61,13 @@ var DZarovny = {
 			if (menuItem){
 				imgs.each(function(img){
 					new Asset.image(img.src, { events: { load: function(){
-						var percent = String.from(((total++/imgs.length) * 100).round());
-						if (percent.length == 1){
-							percent = '0' + percent;
+						if (!DZarovny.loaded){
+							var percent = String.from(((total++/imgs.length) * 100).round());
+							if (percent.length == 1){
+								percent = '0' + percent;
+							}
+							menuItem.retrieve('percent', new Element('span.percent')).inject(menuItem).set('text', percent);
 						}
-						menuItem.retrieve('percent', new Element('span.percent')).inject(menuItem).set('text', percent);
 					} }});
 				});
 			}
