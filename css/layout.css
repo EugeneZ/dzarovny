@@ -10,10 +10,10 @@ nav h1 { margin-top: 5em; }
 nav ul { display: none; }
 #navWrapper:hover ul { display: block; }
 nav ul li {}
-nav ul li a:link,
-nav ul li a:visited { text-decoration: none; color: #000; font-size: 1.6em; line-height: 2em; }
+/* (see type.css) nav ul li a:link,
+nav ul li a:visited { text-decoration: none; color: #FFF; font-size: 1.6em; line-height: 2em; } 
 nav ul li ul li a:link,
-nav ul li ul li a:visited { font-size: 1.3em; color: #555; }
+nav ul li ul li a:visited { font-size: 1.3em; color: #666; } */
 
 #main h2,
 #main h3 { clear: both; padding-top: 1em; }

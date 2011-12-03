@@ -1,10 +1,17 @@
-html { font-size: 62.5%; }
-body { font-family: Georgia, sans-serif; color: #000; }
+html { font-size: 62.5%; background-color: #1C1C1C; background-image:url("../images/black_paper.png"); }
+body { font-family: 'PT Serif', Georgia, serif; color: #FFF;  }
 
-h1, h2, h3 { font-weight: bold; }
+h1, h2, h3 { font-weight: bold; color: #FFF; }
 
 h1 { font-size: 4em; }
 h2 { font-size: 3em; }
 h3 { font-size: 1.6em; }
 
 p { font-size: 1.4em; }
+
+nav ul li a:link,
+nav ul li a:visited { text-decoration: none; color: #666; font-size: 1.8em; font-style:italic; line-height: 1.6em; }
+nav ul li a:hover { color: #777;}
+nav ul li ul li a:link,
+nav ul li ul li a:visited { font-family: 'PT Serif Caption'; font-size: 1.4em; font-style:normal; line-height: 1.6em; color: #DDD; }
+nav ul li ul li a:hover { color:#FFF; }
