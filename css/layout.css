@@ -28,4 +28,9 @@ nav ul li ul li a:visited { font-size: 1.3em; color: #666; } */
 #main ul li ul li.spacer { height: 1600px;}
 /* three per row max, not needed #main ul li ul li:nth-child(3n+1) { clear: left; } */
 
+
+.infotab { background-image:url("../images/Style/Info_tab.png"); bottom:0; right:0; position:absolute; height:65px; width:65px; z-index: 10; }
+#label { height:2em; width:inherit; padding-top:2em; }
+#progress { width: inherit; height:18px; background-image:url("../images/Style/bar.png"); background-repeat:repeat-x; margin-top:18px; }
+#longbar { width:7px; height:18px; z-index:10; margin-top:-4px; position:relative; }
 /*footer { position: absolute; bottom: 0; margin-left: 20.83333%; width: 100%; padding: 1em; background-color: #fff; font-size: 1.5em; }*/ footer { display: none; }

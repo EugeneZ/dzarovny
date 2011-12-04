@@ -13,5 +13,7 @@ nav ul li a:link,
 nav ul li a:visited { text-decoration: none; color: #666; font-size: 1.8em; font-style:italic; line-height: 1.6em; }
 nav ul li a:hover { color: #777;}
 nav ul li ul li a:link,
-nav ul li ul li a:visited { font-family: 'PT Serif Caption'; font-size: 1.4em; font-style:normal; line-height: 1.6em; color: #DDD; }
+nav ul li ul li a:visited { font-family: 'PT Serif Caption'; font-size: 1.4em; line-height: 1.6em; color: #DDD; }
 nav ul li ul li a:hover { color:#FFF; }
+
+#label { font-size:1.8em; color:#777; }
