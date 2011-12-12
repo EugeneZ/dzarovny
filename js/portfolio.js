@@ -16,6 +16,7 @@ var Portfolio = new Class({
 		this.fx = new Fx.Scroll(this.options.target, {
 			'link'   : this.options.link
 		});
+		this.instructions = new Element('div#instructions').inject(document.getElement('nav'));
 		
 		this.setCache();
 		this.attachMenu();
