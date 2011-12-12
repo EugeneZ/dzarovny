@@ -8,6 +8,14 @@ var DZarovny = {
 		DZarovny.navEl = document.id('navWrapper');
 		DZarovny.portfolio = new Portfolio('portfolio');
 		DZarovny.nav       = new Navigation('nav');
+		
+		DZarovny.portfolio.addEvent('navigate', function(x, y){
+			if (x){
+				var percent = DZarovny.portfolio.getProgressPercent();
+				percent = n / DZarovny.nav.progress.getSize().x
+			}
+		});
+		
 		DZarovny.initNav();
 		DZarovny.initMenu();
 		DZarovny.initProgress();

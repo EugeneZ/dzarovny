@@ -97,6 +97,8 @@ var Portfolio = new Class({
 		}
 		
 		this.go(coords, true);
+		
+		this.fireEvent('navigate', [x, y]);
 	},
 	
 	// Scrolls the window to the coords provided. Use this.find to get coords.
@@ -218,5 +220,9 @@ var Portfolio = new Class({
 		
 		$$('#main ul li ul li').setStyle('margin-right', ((this.windowSize.x - imgSizeX) / 2) - (imgSizeX * peekFactorX));
 		$$('#main ul li ul li').setStyle('margin-bottom', ((this.windowSize.y - imgSizeY) / 2) - (imgSizeY * peekFactorY));
+	},
+	
+	getProgressPercent: function(){
+		return ((this.active[1] / this.categories[this.active[0]]) * 100).round();
 	}
 });

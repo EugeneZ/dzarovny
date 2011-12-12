@@ -22,6 +22,18 @@ var Navigation = new Class({
 			this.el.getElement('ul').fade('out');
 		}.bind(this));
 		
+		this.progress = this.buildStatusInfo($('statusinfo'));
+	},
+	
+	buildStatusInfo: function(el){
+		var img      = new Element('img', { 'src': 'images/Style/longbar.png' }).set('tween', { 'link': 'cancel' });
+		var bg       = new Element('div#longbar').adopt(img);
+		var progress = new Element('div#progress').adopt(bg);
+		var label    = new Element('div#label');
 		
+		label.replace(el);
+		progress.inject(progress, 'after');
+		
+		return img;
 	}
 });
