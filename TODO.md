@@ -23,3 +23,4 @@ Mobile
 - swipe support
 - menu = dropdown (no logo fade)
 - in vertical orientation, nav on top instead of left
+- set up adaptive imagage with some php ( http://24ways.org/2011/adaptive-images-for-responsive-designs )
