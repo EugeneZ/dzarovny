@@ -1,9 +1,6 @@
 Navigation
 ========
-- show active category
-- show progress
 - (later) have menu vertical-aligned center even when accordion expanded
-- menu collapse after category selected
 - user keyboard instruction + copywrite 
 
 Layout

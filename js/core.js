@@ -5,14 +5,25 @@ var DZarovny = {
 	
 	domready: function(){
 		document.getElement('body').addClass('js');
-		DZarovny.navEl = document.id('navWrapper');
-		DZarovny.portfolio = new Portfolio('portfolio');
-		DZarovny.nav       = new Navigation('nav');
+		DZarovny.navEl        = document.id('navWrapper');
+		DZarovny.portfolio    = new Portfolio('portfolio');
+		DZarovny.nav          = new Navigation('nav');
+		DZarovny.nav.progress.fade('hide').store('DZarovny.firstclick', false);
 		
 		DZarovny.portfolio.addEvent('navigate', function(x, y){
-			if (x){
-				var percent = DZarovny.portfolio.getProgressPercent();
-				percent = n / DZarovny.nav.progress.getSize().x
+			var progressEl    = DZarovny.nav.progress.getElement('#longbar');
+			var progressWidth = progressEl.getParent().getSize().x;
+			var percent       = DZarovny.portfolio.getProgressPercent();
+			progressEl.tween('margin-left', (progressWidth * percent).round() + ((DZarovny.portfolio.getProgressStep() * progressWidth) * percent).ceil().limit(0, progressWidth - progressEl.getSize().x));
+			
+			DZarovny.nav.progress.getElement('#category').set('text', DZarovny.portfolio.getCategoryName());
+			
+			DZarovny.nav.hide();
+			
+			// first click, reshow the progress element
+			if (!DZarovny.nav.progress.retrieve('DZarovny.firstclick', false)) {
+				DZarovny.nav.progress.fade('in');
+				DZarovny.nav.progress.store('DZarovny.firstclick', true);
 			}
 		});
 		

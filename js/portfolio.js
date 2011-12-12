@@ -1,5 +1,5 @@
 var Portfolio = new Class({
-	Implements: Options,
+	Implements: [Options, Events],
 	Binds: ['navigate', 'go', 'find', 'configureMargins', 'setCache'],
 	options: {
 		target     : window,
@@ -97,8 +97,6 @@ var Portfolio = new Class({
 		}
 		
 		this.go(coords, true);
-		
-		this.fireEvent('navigate', [x, y]);
 	},
 	
 	// Scrolls the window to the coords provided. Use this.find to get coords.
@@ -122,6 +120,8 @@ var Portfolio = new Class({
 		);
 		this.fadeSlides(coords);
 		//this.resizeSlides(coords, false);
+		
+		this.fireEvent('navigate', coords);
 	},
 	
 	fadeSlides: function(coords){
@@ -223,6 +223,15 @@ var Portfolio = new Class({
 	},
 	
 	getProgressPercent: function(){
-		return ((this.active[1] / this.categories[this.active[0]]) * 100).round();
+		return this.active[1] / this.categories[this.active[0]].slides.length;
+	},
+	
+	getProgressStep: function(){
+		return 1 / this.categories[this.active[0]].slides.length;
+	},
+	
+	getCategoryName: function(){
+		var el = this.categories[this.active[0]].slides[this.active[1]];
+		return document.getElement('a[href=#' + el.getElement('! li h3 a').get('name') + ']').get('text');
 	}
 });
