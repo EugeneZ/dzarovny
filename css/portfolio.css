@@ -3,13 +3,13 @@ body.js { overflow: hidden; }
 
 body.js #navWrapper nav > ul { display: block; opacity: 0; }
 body.js #navWrapper nav > ul ul { display: block; }
-
+body.js #instructions { height: 100px; width: 160px; background-image: url("../images/Style/keys.png"); background-repeat:repeat-x; }
 body.js #main { margin-left: 2000px; margin-top: 2000px; position: absolute; }
 
 body.js #main h1,
 body.js #main h2,
 body.js #main h3,
-body.js #main p { display: none;}
+/*body.js #main p { display:none; }
 
 /*body.js #main #portfolio { position: relative; }
 body.js #main ul li ul li { display: none; position: absolute; width: 98%; }*/ /* 1% left and right margin + 98% = 100% */
