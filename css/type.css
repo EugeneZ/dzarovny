@@ -7,7 +7,7 @@ h1 { font-size: 4em; }
 h2 { font-size: 3em; }
 h3 { font-size: 1.6em; }
 
-p { font-size: 1.4em; }
+p { font-size: 1.8em; line-height: 2em; position:absolute; top:0px; left:0px; padding: 8% 10%; }
 
 nav ul li a:link,
 nav ul li a:visited { text-decoration: none; color: #666; font-size: 1.8em; font-style:italic; line-height: 1.6em; }

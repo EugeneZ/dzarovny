@@ -9,7 +9,7 @@ body.js #main { margin-left: 2000px; margin-top: 2000px; position: absolute; }
 body.js #main h1,
 body.js #main h2,
 body.js #main h3,
-body.js #main p { display: none;}
+/*body.js #main p { display:none; }
 
 /*body.js #main #portfolio { position: relative; }
 body.js #main ul li ul li { display: none; position: absolute; width: 98%; }*/ /* 1% left and right margin + 98% = 100% */
