@@ -7,7 +7,11 @@ h1 { font-size: 4em; }
 h2 { font-size: 3em; }
 h3 { font-size: 1.6em; }
 
+<<<<<<< HEAD
 p { font-size: 1.8em; line-height: 2em; position:absolute; bottom:0px; left:0px; padding: 8% 10%; background-color:rgba(0,0,0,0.7) }
+=======
+p { font-size: 1.8em; line-height: 2em; position:absolute; top:0px; left:0px; bottom: 0px; padding: 8% 10%; background-color:rgba(0,0,0,0.7) }
+>>>>>>> 6f26515ab3466c4eaaee1c01799cc0b6ad6b1261
 
 nav ul li a:link,
 nav ul li a:visited { text-decoration: none; color: #666; font-size: 1.8em; font-style:italic; line-height: 1.6em; }

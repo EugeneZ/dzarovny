@@ -2,12 +2,13 @@ var Portfolio = new Class({
 	Implements: [Options, Events],
 	Binds: ['navigate', 'go', 'find', 'configureMargins', 'setCache'],
 	options: {
-		target     : window,
-		classes    : ['active', 'inactive'],
-		categories : 'ul li ul',
-		slides     : 'li',
-		offset     : [0, 0],
-		link       : 'cancel'
+		target      : window,
+		classes     : ['active', 'inactive'],
+		categories  : 'ul li ul',
+		slides      : 'li',
+		offset      : [0, 0],
+		link        : 'cancel',
+		instructions: ''
 	},
 	initialize: function(el, options){
 		this.setOptions(options);
@@ -16,7 +17,6 @@ var Portfolio = new Class({
 		this.fx = new Fx.Scroll(this.options.target, {
 			'link'   : this.options.link
 		});
-		this.instructions = new Element('div#instructions').inject(document.getElement('nav'));
 		
 		this.setCache();
 		this.attachMenu();
@@ -50,10 +50,16 @@ var Portfolio = new Class({
 		
 		body.getElements('nav ul li a').each(function(link){
 			link.addEvent('click', function(e) {
-				e.preventDefault();
+				e.stop();
 			  
 			  	var href = link.get('href').substring(1);
-			  	this.go(this.find(this.el.getElement('a[name=' + href + ']')));
+			  	if (this.go(this.find(this.el.getElement('a[name=' + href + ']')))){
+			  		if (!this.instructions) {
+			  			this.instructions = new Element('div#instructions').inject(document.getElement('nav')).fade('hide').set('html', this.options.instructions);
+			  			this.instructions.fade('in');
+			  			if (DZarovny && DZarovny.nav) DZarovny.nav.attachFx(); // bad!
+			  		}
+			  	}
 
 			}.bind(this));
 		}.bind(this));
@@ -97,7 +103,13 @@ var Portfolio = new Class({
 			return false;
 		}
 		
-		this.go(coords, true);
+		// on first use of the keyboard, we can destroy the instructions.
+		if (typeOf(this.instructions) == 'element') {
+			this.instructions.destroy();
+			this.instructions = true;
+		}
+		
+		return this.go(coords, true);
 	},
 	
 	// Scrolls the window to the coords provided. Use this.find to get coords.
@@ -123,6 +135,8 @@ var Portfolio = new Class({
 		//this.resizeSlides(coords, false);
 		
 		this.fireEvent('navigate', coords);
+		
+		return true;
 	},
 	
 	fadeSlides: function(coords){

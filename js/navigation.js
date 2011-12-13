@@ -1,7 +1,7 @@
 var Navigation = new Class({
 	Implements: Options,
 	options: {
-		
+		link: 'cancel'
 	},
 
 	initialize: function(el, options){
@@ -9,19 +9,50 @@ var Navigation = new Class({
 		this.el = document.id(el) || document.getElement(el);
 		this.progress = this.buildStatusInfo($('statusinfo'));
 		
+		this.attachFx();
 		this.attachEvents();
+		this.hide();
 	},
 	
-	show: function(){
-		this.el.getElement('h1').fade('out');
-		this.el.getElement('ul').fade('in');
-		if (DZarovny.nav.progress.retrieve('DZarovny.firstclick', false)) this.progress.fade('out');
+	show: function(nofx){
+		var method = nofx ? 'set':'start';
+		
+		this.menufx.cancel();
+		this.bgfx[method](this.bgfxshow).chain(function(){
+			//this.bgfx.cancel();
+			this.menufx[method](1);
+		}.bind(this));
 	},
 	
-	hide: function(){
-		this.el.getElement('h1').fade('in');
-		this.el.getElement('ul').fade('out');
-		if (DZarovny.nav.progress.retrieve('DZarovny.firstclick', false)) this.progress.fade('in');
+	hide: function(nofx){
+		var method = nofx ? 'set':'start';
+		
+		this.bgfx.cancel();
+		this.menufx[method](0).chain(function(){
+			//this.menufx.cancel()
+			this.bgfx[method](this.bgfxhide);
+		}.bind(this));
+	},
+	
+	attachFx: function(){
+		var menu  = this.el.getElement('> ul'); 
+		var els   = this.el.getElements('> *:not(ul)');
+		
+		this.menufx = new Fx.Tween(menu, {
+			property: 'opacity',
+			link: this.options.link
+		});
+		
+		this.bgfx = new Fx.Elements(els, {
+			link: this.options.link
+		});
+
+		this.bgfxshow = {};
+		this.bgfxhide = {};
+		els.length.times(function(i){
+			this.bgfxshow[i] = { 'opacity': 0, 'z-index': -1 };
+			this.bgfxhide[i] = { 'opacity': 1, 'z-index': 101 };
+		}.bind(this));
 	},
 	
 	attachEvents: function(){
@@ -35,7 +66,7 @@ var Navigation = new Class({
 			this.hide();
 		}.bind(this));
 		
-		this.el.getElement('h1').addEvent('click', function(e){
+		this.el.addEvent('click', function(e){
 			e.preventDefault();
 			this.show();
 		}.bind(this));

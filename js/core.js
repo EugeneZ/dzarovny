@@ -6,7 +6,7 @@ var DZarovny = {
 	domready: function(){
 		document.getElement('body').addClass('js');
 		DZarovny.navEl        = document.id('navWrapper');
-		DZarovny.portfolio    = new Portfolio('portfolio');
+		DZarovny.portfolio    = new Portfolio('portfolio', { 'instructions': ''}); //<-- put html between the quotes there to have it appear in the instructions
 		DZarovny.nav          = new Navigation('nav');
 		DZarovny.nav.progress.fade('hide').store('DZarovny.firstclick', false);
 		
@@ -27,14 +27,15 @@ var DZarovny = {
 			}
 		});
 		
-		DZarovny.initNav();
+		DZarovny.initNav(true);
 		DZarovny.initMenu();
 		DZarovny.initProgress();
+		DZarovny.initMoreInfo();
 	},
 	
 	load: function(){
 		DZarovny.loaded = true;
-		DZarovny.initNav();
+		DZarovny.initNav(true);
 		DZarovny.removeProgress();
 		DZarovny.portfolio.configureMargins();
 	},
@@ -48,7 +49,7 @@ var DZarovny = {
 		}
 	},
 	
-	initNav: function(){
+	initNav: function(firstrun){
 		var logo       = DZarovny.navEl.getElement('nav h1');
 		var menu       = DZarovny.navEl.getElement('nav ul').setStyle('position', 'absolute').setStyle('top', 0);
 		var windowSize = window.getSize();
@@ -59,10 +60,20 @@ var DZarovny = {
 		logo.setStyle('margin-top', logoMargin);
 		menu.setStyle('margin-top', menuMargin);
 		
+		if (firstrun){ 
+			logo.fade('hide');
+		}
+		
 		if (DZarovny.loaded) {
 			var imageSize  = document.getElement('#main ul li ul li').getSize().x;
 			var navWidth   = (windowSize.x - imageSize) / 2;
-			DZarovny.navEl.tween('width', navWidth);
+			
+			if (firstrun){
+				DZarovny.navEl.setStyle('width', navWidth);
+				logo.fade('in');
+			} else {
+				DZarovny.navEl.tween('width', navWidth);
+			}
 		};
 	},
 	
@@ -96,6 +107,28 @@ var DZarovny = {
 	
 	removeProgress: function(){
 		DZarovny.navEl.getElements('span.percent').destroy();
+	},
+	
+	initMoreInfo: function(){
+		DZarovny.portfolio.el.getElements('img').each(function(img){
+			if (!img.retrieve('DZarovny.infotab')){
+				var text    = img.getElement('! a ~ p');
+				if (text){
+					text.fade('hide');
+					var infotab = new Element('div.infotab').inject(text.getParent(), 'top')
+						.addEvents({
+							'mouseenter': function(){
+								text.fade('in');
+							},
+							'mouseleave': function(){
+								text.fade('out');
+							}
+						});
+					
+					img.store('DZarovny.infotab', infotab);
+				}
+			}
+		});
 	}
 };
 
