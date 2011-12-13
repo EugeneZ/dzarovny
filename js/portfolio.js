@@ -50,7 +50,7 @@ var Portfolio = new Class({
 		
 		body.getElements('nav ul li a').each(function(link){
 			link.addEvent('click', function(e) {
-				e.preventDefault();
+				e.stop();
 			  
 			  	var href = link.get('href').substring(1);
 			  	if (this.go(this.find(this.el.getElement('a[name=' + href + ']')))){

@@ -1,7 +1,7 @@
 var Navigation = new Class({
 	Implements: Options,
 	options: {
-		link: 'ignore'
+		link: 'cancel'
 	},
 
 	initialize: function(el, options){
@@ -11,55 +11,47 @@ var Navigation = new Class({
 		
 		this.attachFx();
 		this.attachEvents();
-		this.hide(true);
+		this.hide();
 	},
 	
 	show: function(nofx){
 		var method = nofx ? 'set':'start';
 		
-		this.fx.show[method](this.fx.showCache).chain(function(){
-			this.el.getElements('> ul').fade(nofx ? 'show':'in');
-		
-			// progress needs special treatment
-			if (this.progress.retrieve('DZarovny.firstclick', false)) {
-				this.progress.fade(nofx ? 'hide':'out');
-			} else {
-				this.progress.fade('hide');
-			}
+		this.menufx.cancel();
+		this.bgfx[method](this.bgfxshow).chain(function(){
+			//this.bgfx.cancel();
+			this.menufx[method](1);
 		}.bind(this));
 	},
 	
 	hide: function(nofx){
 		var method = nofx ? 'set':'start';
 		
-		this.fx.hide[method](0).chain(function(){
-			this.el.getElements('> *:not(ul)').fade(nofx ? 'show':'in');
-		
-			// progress needs special treatment
-			if (this.progress.retrieve('DZarovny.firstclick', false)) {
-				this.progress.fade(nofx ? 'show':'in');
-			} else {
-				this.progress.fade('hide');
-			}
+		this.bgfx.cancel();
+		this.menufx[method](0).chain(function(){
+			//this.menufx.cancel()
+			this.bgfx[method](this.bgfxhide);
 		}.bind(this));
 	},
 	
 	attachFx: function(){
-		this.el.getElements('> *').set('tween', { link: this.options.link });
-		var els = this.el.getElements('> *:not(ul)');
-		this.fx = {};
-		this.fx.show = new Fx.Elements(els, {
-			property: 'opacity',
-			link: this.options.link
-		});
-		this.fx.hide = new Fx.Tween(this.el.getElement('> ul'), {
+		var menu  = this.el.getElement('> ul'); 
+		var els   = this.el.getElements('> *:not(ul)');
+		
+		this.menufx = new Fx.Tween(menu, {
 			property: 'opacity',
 			link: this.options.link
 		});
 		
-		this.fx.showCache = {};
+		this.bgfx = new Fx.Elements(els, {
+			link: this.options.link
+		});
+
+		this.bgfxshow = {};
+		this.bgfxhide = {};
 		els.length.times(function(i){
-			this.fx.showCache[i] = { 'opacity': [1, 0] };
+			this.bgfxshow[i] = { 'opacity': 0, 'z-index': -1 };
+			this.bgfxhide[i] = { 'opacity': 1, 'z-index': 101 };
 		}.bind(this));
 	},
 	
@@ -74,7 +66,7 @@ var Navigation = new Class({
 			this.hide();
 		}.bind(this));
 		
-		this.el.getElement('h1').addEvent('click', function(e){
+		this.el.addEvent('click', function(e){
 			e.preventDefault();
 			this.show();
 		}.bind(this));

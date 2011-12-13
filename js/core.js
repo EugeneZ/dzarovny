@@ -6,7 +6,7 @@ var DZarovny = {
 	domready: function(){
 		document.getElement('body').addClass('js');
 		DZarovny.navEl        = document.id('navWrapper');
-		DZarovny.portfolio    = new Portfolio('portfolio', { 'instructions': 'Use your arrow keys to navigate'});
+		DZarovny.portfolio    = new Portfolio('portfolio', { 'instructions': ''}); //<-- put html between the quotes there to have it appear in the instructions
 		DZarovny.nav          = new Navigation('nav');
 		DZarovny.nav.progress.fade('hide').store('DZarovny.firstclick', false);
 		
@@ -30,6 +30,7 @@ var DZarovny = {
 		DZarovny.initNav(true);
 		DZarovny.initMenu();
 		DZarovny.initProgress();
+		DZarovny.initMoreInfo();
 	},
 	
 	load: function(){
@@ -106,6 +107,28 @@ var DZarovny = {
 	
 	removeProgress: function(){
 		DZarovny.navEl.getElements('span.percent').destroy();
+	},
+	
+	initMoreInfo: function(){
+		DZarovny.portfolio.el.getElements('img').each(function(img){
+			if (!img.retrieve('DZarovny.infotab')){
+				var text    = img.getElement('! a ~ p');
+				if (text){
+					text.fade('hide');
+					var infotab = new Element('div.infotab').inject(text.getParent(), 'top')
+						.addEvents({
+							'mouseenter': function(){
+								text.fade('in');
+							},
+							'mouseleave': function(){
+								text.fade('out');
+							}
+						});
+					
+					img.store('DZarovny.infotab', infotab);
+				}
+			}
+		});
 	}
 };
 
