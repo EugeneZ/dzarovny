@@ -1,5 +1,6 @@
 var DZarovny = {
 	// variables and caches
+	sampleImage: false,
 	loaded: false,
 	navEl : null,
 	
@@ -64,8 +65,8 @@ var DZarovny = {
 			logo.fade('hide');
 		}
 		
-		if (DZarovny.loaded) {
-			var imageSize  = document.getElement('#main ul li ul li').getSize().x;
+		if (DZarovny.sampleImage) {
+			var imageSize  = DZarovny.sampleImage.getElement('!li').getSize().x;
 			var navWidth   = (windowSize.x - imageSize) / 2;
 			
 			if (firstrun){
@@ -91,7 +92,15 @@ var DZarovny = {
 			
 			if (menuItem){
 				imgs.each(function(img){
-					new Asset.image(img.src, { events: { load: function(){
+					img.addEvent('load', function(){
+						
+						// after the first image is loaded, we now know about the image dimensions (other code uses this flag)
+						if (!DZarovny.sampleImage){
+							DZarovny.sampleImage = this;
+							DZarovny.initNav(true);
+						}
+						
+						// grow progress while categories are loading
 						if (!DZarovny.loaded){
 							var percent = String.from(((total++/imgs.length) * 100).round());
 							if (percent.length == 1){
@@ -99,7 +108,7 @@ var DZarovny = {
 							}
 							menuItem.retrieve('percent', new Element('span.percent')).inject(menuItem).set('text', percent);
 						}
-					} }});
+					});
 				});
 			}
 		});
