@@ -3,7 +3,7 @@ body.js { overflow: hidden; }
 
 body.js #navWrapper nav > ul { display: block; opacity: 0; }
 body.js #navWrapper nav > ul ul { display: block; }
-body.js #instructions { height: 100px; width: 160px; background-image: url("../images/Style/keys.png"); background-repeat:repeat-x; }
+body.js #instructions { height: 100px; width: 160px; background-image: url("../images/Style/keys.png"); background-repeat:repeat-x; font-size: 1.2em; margin-top: 2em; padding-top: 6.5em;}
 body.js #main { margin-left: 2000px; margin-top: 2000px; position: absolute; }
 
 body.js #main h1,
@@ -38,4 +38,3 @@ div.fader.left div { left: 0; top: 0; bottom: 0; width: 100px; }
 body.js #navWrapper a span.percent { float: left; display: inline-block; margin-right: 5px; } 
 
 
-body.js #instructions { font-size: 1.2em; margin-top: 3em; }

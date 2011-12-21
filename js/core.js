@@ -6,7 +6,7 @@ var DZarovny = {
 	domready: function(){
 		document.getElement('body').addClass('js');
 		DZarovny.navEl        = document.id('navWrapper');
-		DZarovny.portfolio    = new Portfolio('portfolio', { 'instructions': ''}); //<-- put html between the quotes there to have it appear in the instructions
+		DZarovny.portfolio    = new Portfolio('portfolio', { 'instructions': 'Use keyboard to navigate.</br>Lower right corner for info.'}); //<-- put html between the quotes there to have it appear in the instructions
 		DZarovny.nav          = new Navigation('nav');
 		DZarovny.nav.progress.fade('hide').store('DZarovny.firstclick', false);
 		
