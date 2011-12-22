@@ -102,8 +102,8 @@ var DZarovny = {
 						
 						// grow progress while categories are loading
 						if (!DZarovny.loaded){
-							var percent = String.from(((total++/imgs.length) * 100).round());
-							if (percent.length == 1){
+							var percent = String.from(((++total/imgs.length) * 100).round());
+							if (percent.length == 1){ 
 								percent = '0' + percent;
 							}
 							menuItem.retrieve('percent', new Element('span.percent')).inject(menuItem).set('text', percent);
