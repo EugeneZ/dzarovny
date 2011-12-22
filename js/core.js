@@ -7,7 +7,10 @@ var DZarovny = {
 	domready: function(){
 		document.getElement('body').addClass('js');
 		DZarovny.navEl        = document.id('navWrapper');
-		DZarovny.portfolio    = new Portfolio('portfolio', { 'instructions': 'Use keyboard to navigate.</br>Lower right corner for info.'}); //<-- put html between the quotes there to have it appear in the instructions
+		DZarovny.portfolio    = new Portfolio('portfolio', { 'instructions': 
+			'Use keyboard to navigate.</br>' +
+			'Lower right corner for info.'
+		}); //<-- put html above to have it appear in the instructions
 		DZarovny.nav          = new Navigation('nav');
 		DZarovny.nav.progress.fade('hide').store('DZarovny.firstclick', false);
 		
@@ -26,6 +29,12 @@ var DZarovny = {
 				DZarovny.nav.progress.fade('in');
 				DZarovny.nav.progress.store('DZarovny.firstclick', true);
 			}
+			
+			// if ther spacebar is being held down, show the info right away
+			if (DZarovny.keydown){
+				DZarovny.moreInfoShow();
+				DZarovny.keydown = false;
+			}
 		});
 		
 		DZarovny.initNav(true);
@@ -36,7 +45,7 @@ var DZarovny = {
 	
 	load: function(){
 		DZarovny.loaded = true;
-		DZarovny.initNav(true);
+		DZarovny.initNav();
 		DZarovny.removeProgress();
 		DZarovny.portfolio.configureMargins();
 	},
@@ -119,6 +128,7 @@ var DZarovny = {
 	},
 	
 	initMoreInfo: function(){
+		
 		DZarovny.portfolio.el.getElements('img').each(function(img){
 			if (!img.retrieve('DZarovny.infotab')){
 				var text    = img.getElement('! a ~ p');
@@ -138,6 +148,35 @@ var DZarovny = {
 				}
 			}
 		});
+		
+		DZarovny.keydown = false;
+		
+		window.addEvent('keydown', function(e){
+			if (e.key == 'space'){
+				e.preventDefault();
+				if (!DZarovny.keydown){
+					DZarovny.moreInfoShow();
+					DZarovny.keydown = true;
+				}
+			}
+		});
+		
+		window.addEvent('keyup', function(e){
+			if (e.key == 'space'){
+				e.preventDefault();
+				DZarovny.moreInfoHide();
+				DZarovny.keydown = false;
+			}
+		});
+		
+	},
+	
+	moreInfoShow: function(){
+		DZarovny.portfolio.getCurrentSlide().getElement('div.infotab').fireEvent('mouseenter');
+	},
+	
+	moreInfoHide: function(){
+		DZarovny.portfolio.getCurrentSlide().getElement('div.infotab').fireEvent('mouseleave');
 	}
 };
 

@@ -20,20 +20,20 @@ body.js iframe { display: none; }
 /* Fading sides 
    IMPORTANT
    If you change the width, change the corresponding vlaues in core.js that rely on them */
-div.fader { position: fixed;  }
-div.fader.top    { top: 0; left: 0; right: 0; background: url('../images/fade-t.png') transparent repeat-x bottom; height: 260px; }
-div.fader.right  { right: 0; top: 0; bottom: 0; background: url('../images/fade-r.png') transparent repeat-y left; width: 260px; }
-div.fader.bottom { bottom: 0; left: 0; right: 0; background: url('../images/fade-b.png') transparent repeat-x top; height: 260px;  }
-div.fader.left   { left: 0; top: 0; bottom: 0; background: url('../images/fade-l.png') transparent repeat-y right; width: 260px; }
+body.js div.fader { position: fixed;  }
+body.js div.fader.top    { top: 0; left: 0; right: 0; background: url('../images/fade-t.png') transparent repeat-x bottom; height: 260px; }
+body.js div.fader.right  { right: 0; top: 0; bottom: 0; background: url('../images/fade-r.png') transparent repeat-y left; width: 260px; }
+body.js div.fader.bottom { bottom: 0; left: 0; right: 0; background: url('../images/fade-b.png') transparent repeat-x top; height: 260px;  }
+body.js div.fader.left   { left: 0; top: 0; bottom: 0; background: url('../images/fade-l.png') transparent repeat-y right; width: 260px; }
 
-div.fader div { position: absolute; background-color: #fff; }
-div.fader.top div { top: 0; left: 0; right: 0; height: 100px; }
-div.fader.right div { right: 0; top: 0; bottom: 0; width: 100px; }
-div.fader.bottom div { bottom: 0; left: 0; right: 0; height: 100px; }
-div.fader.left div { left: 0; top: 0; bottom: 0; width: 100px; }
+body.js div.fader div { position: absolute; background-color: #fff; }
+body.js div.fader.top div { top: 0; left: 0; right: 0; height: 100px; }
+body.js div.fader.right div { right: 0; top: 0; bottom: 0; width: 100px; }
+body.js div.fader.bottom div { bottom: 0; left: 0; right: 0; height: 100px; }
+body.js div.fader.left div { left: 0; top: 0; bottom: 0; width: 100px; }
 
-.zoomOut { max-width: 95%; margin: 2.5%; }
-.zoomNormal { max-width: 100%; margin: 0%; }
+body.js .zoomOut { max-width: 95%; margin: 2.5%; }
+body.js .zoomNormal { max-width: 100%; margin: 0%; }
 
 body.js #navWrapper a span.percent { float: left; display: inline-block; margin-right: 5px; } 
 

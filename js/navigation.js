@@ -19,7 +19,6 @@ var Navigation = new Class({
 		
 		this.menufx.cancel();
 		this.bgfx[method](this.bgfxshow).chain(function(){
-			//this.bgfx.cancel();
 			this.menufx[method](1);
 		}.bind(this));
 	},
@@ -29,7 +28,6 @@ var Navigation = new Class({
 		
 		this.bgfx.cancel();
 		this.menufx[method](0).chain(function(){
-			//this.menufx.cancel()
 			this.bgfx[method](this.bgfxhide);
 		}.bind(this));
 	},

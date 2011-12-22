@@ -122,6 +122,11 @@ var Portfolio = new Class({
 			return false;
 		}
 		
+		// external stuff... not cool TODO: Fix this
+		if (DZarovny && DZarovny.moreInfoHide && DZarovny.keydown){
+			DZarovny.moreInfoHide();
+		}
+		
 		this.active  = coords;
 		var next     = this.categories[this.active[0]].slides[this.active[1]];
 		var nextSize = next.getSize();
@@ -246,7 +251,10 @@ var Portfolio = new Class({
 	},
 	
 	getCategoryName: function(){
-		var el = this.categories[this.active[0]].slides[this.active[1]];
-		return document.getElement('a[href=#' + el.getElement('! li h3 a').get('name') + ']').get('text');
+		return document.getElement('a[href=#' + this.getCurrentSlide().getElement('! li h3 a').get('name') + ']').get('text');
+	},
+	
+	getCurrentSlide: function(){
+		return this.categories[this.active[0]].slides[this.active[1]];
 	}
 });

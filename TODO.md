@@ -1,7 +1,8 @@
 Navigation
 ========
+- prettify the progress bar
 - (later) have menu vertical-aligned center even when accordion expanded
-- user keyboard instruction + copywrite 
+- copyright
 
 Layout
 ======
@@ -9,9 +10,7 @@ Layout
   
 Portfolio
 =========
-- reveal text on hover
-- fix key mashing/chaining
-- image loading progress (numbers)
+- use url hashes (and return people to the image they wanted to go to if url is copy-pastaed)
 - cylinder effect
   
 Mobile
