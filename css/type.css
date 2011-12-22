@@ -1,4 +1,7 @@
-html { font-size: 62.5%; background-color: #1C1C1C; background-image:url("../images/black_paper.png"); background-attachment: fixed; }
+/* WARNING: If you change this background image, don't forget to change it at the bottom of core.js as well */
+html { background-image:url("../images/black_paper.png"); }
+
+html { font-size: 62.5%; background-color: #1C1C1C;  background-attachment: fixed; }
 body { font-family: 'PT Serif', Georgia, serif; color: #FFF;  }
 
 h1, h2, h3 { font-weight: bold; color: #FFF; }

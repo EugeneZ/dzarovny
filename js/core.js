@@ -144,3 +144,6 @@ var DZarovny = {
 window.addEvent('domready', DZarovny.domready);
 window.addEvent('load'    , DZarovny.load);
 window.addEvent('resize'  , DZarovny.resize);
+
+// preload background image so that it loads faster (relies on JS being in the head tag)
+new Asset.image('images/black_paper.png'); // should be the same background image from the top of type.css
