@@ -3,7 +3,7 @@ body.js { overflow: hidden; }
 
 body.js #navWrapper nav > ul { display: block; opacity: 0; }
 body.js #navWrapper nav > ul ul { display: block; }
-body.js #instructions { height: 100px; width: 160px; background-image: url("../images/Style/keys.png"); background-repeat:repeat-x; font-size: 1.2em; margin-top: 2em; padding-top: 6.5em;}
+body.js #instructions { height: auto; width: 100%; font-size: 1.4em; padding-top: 4.5em; line-height: 1.6em; }
 body.js #main { margin-left: 2000px; margin-top: 2000px; position: absolute; }
 
 body.js #main h1,

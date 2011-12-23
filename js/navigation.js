@@ -71,8 +71,8 @@ var Navigation = new Class({
 	},
 	
 	buildStatusInfo: function(el){
-		var img      = new Element('img', { 'src': 'images/Style/longbar.png' }).set('tween', { 'link': 'cancel' });
-		var bg       = new Element('div#longbar').adopt(img);
+		var img      = new Element('img', { 'src': 'images/Style/bullet.png' }).set('tween', { 'link': 'cancel' });
+		var bg       = new Element('div#bullet').adopt(img);
 		var progress = new Element('div#progress').adopt(bg);
 		var category = new Element('div#category');
 		var label    = new Element('div#label').adopt(category).adopt(progress);
