@@ -8,7 +8,7 @@ var DZarovny = {
 		document.getElement('body').addClass('js');
 		DZarovny.navEl        = document.id('navWrapper');
 		DZarovny.portfolio    = new Portfolio('portfolio', { 'instructions': 
-			'<img src="images/Style/keys.png"/></br>Use your keyboard arrows	to navigate and hold the spacebar to display info.'
+			'<img src="images/Style/keys.png"/></br>Use your keyboard arrows to navigate and hold the spacebar to display info.'
 		}); //<-- put html above to have it appear in the instructions
 		DZarovny.nav          = new Navigation('nav');
 		DZarovny.nav.progress.fade('hide').store('DZarovny.firstclick', false);

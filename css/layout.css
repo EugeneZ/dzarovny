@@ -28,11 +28,14 @@ nav ul li ul li a:visited { font-size: 1.3em; color: #666; } */
 #main ul li ul li.spacer { height: 1600px;}
 /* three per row max, not needed #main ul li ul li:nth-child(3n+1) { clear: left; } */
 
-
-.left  { background-image:url("../images/Style/tab_left.png"); background-repeat: no-repeat; background-position:left center; z-index:6; height:100%; width:20%;  left:0px;   top:0px; position:absolute; }
-.up    { background-image:url("../images/Style/tab_up.png"); background-repeat: no-repeat; background-position:center top; z-index:4; height:20%;  width:100%; top:0px; 	 		  position:absolute; }
-.down  { background-image:url("../images/Style/tab_down.png"); background-repeat: no-repeat; background-position:center bottom; z-index:4; height:20%;  width:100%; bottom:0px; 		  position:absolute; }
-.right { background-image:url("../images/Style/tab_right.png"); background-repeat: no-repeat; background-position:right center; z-index:6; height:100%; width:20%;  right:0px;  top:0px; position:absolute; }
+.left:hover  { background-image:url("../images/Style/tab_left.png"); background-repeat: no-repeat; background-position:left center; }
+.left  		 { display:block;  z-index:6; height:100%; width:20%; left:0px; top:0px; position:absolute; }
+.up:hover 	 { background-image:url("../images/Style/tab_up.png"); background-repeat: no-repeat; background-position:center top; }
+.up   		 { display:block;  z-index:4; height:20%;  width:100%; top:0px; position:absolute; }
+.down:hover  { background-image:url("../images/Style/tab_down.png"); background-repeat: no-repeat; background-position:center bottom; }
+.down  		 { display:block; z-index:4; height:20%;  width:100%; bottom:0px; position:absolute; }
+.right:hover { background-image:url("../images/Style/tab_right.png"); background-repeat: no-repeat; background-position:right center; }
+.right 		 { display:block; z-index:6; height:100%; width:20%;  right:0px;  top:0px; position:absolute; }
 
 .infotab { background-image:url("../images/Style/Info_tab.png"); bottom: 3%; right:0; position:absolute; height:27px; width:45px; z-index: 10; }
 #label { height:2em; width:inherit; margin-top:5em; }
