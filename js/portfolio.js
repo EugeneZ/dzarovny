@@ -1,6 +1,6 @@
 var Portfolio = new Class({
 	Implements: [Options, Events],
-	Binds: ['navigate', 'go', 'find', 'configureMargins', 'setCache'],
+	Binds: ['navigate', 'go', 'find', 'configureMargins', 'setCache', 'up', 'down', 'left', 'right'],
 	options: {
 		target      : window,
 		classes     : ['active', 'inactive'],
@@ -8,7 +8,8 @@ var Portfolio = new Class({
 		slides      : 'li',
 		offset      : [0, 0],
 		link        : 'cancel',
-		instructions: ''
+		instructions: '',
+		altsize     : [1024, 768]
 	},
 	initialize: function(el, options){
 		this.setOptions(options);
@@ -21,6 +22,7 @@ var Portfolio = new Class({
 		this.setCache();
 		this.attachMenu();
 		this.attachKeyboard();
+		this.attachEdges();
 		this.configureMargins();
 		
 		this.fx.set(0,0);
@@ -68,24 +70,23 @@ var Portfolio = new Class({
 	attachKeyboard: function(){
 		this.keyboard = new Keyboard({
 			'events': {
-				'up': function(e){
-					e.preventDefault();
-					this.navigate(0, -1);
-				}.bind(this),
-				'down': function(e){
-					e.preventDefault();
-					this.navigate(0, 1);
-				}.bind(this),
-				'left': function(e){
-					e.preventDefault();
-					this.navigate(-1, 0);
-				}.bind(this),
-				'right': function(e){
-					e.preventDefault();
-					this.navigate(1, 0);
-				}.bind(this)
+				'up'   : this.up,
+				'down' : this.down,
+				'left' : this.left,
+				'right': this.right
 			}
 		}).activate();
+	},
+	
+	attachEdges: function(){
+		this.el.getElements('ul > li > ul > li > a').each(function(a){
+			a.adopt(
+				new Element('a.left' ).addEvent('click', this.left),
+				new Element('a.up'   ).addEvent('click', this.up),
+				new Element('a.down' ).addEvent('click', this.down),
+				new Element('a.right').addEvent('click', this.right)
+			)
+		}.bind(this));
 	},
 	
 	// Scrolls
@@ -132,16 +133,41 @@ var Portfolio = new Class({
 		var nextSize = next.getSize();
 		var pos      = next.getPosition();
 		
-		this.fx.start(
-			pos.x + this.options.offset[0] -((this.windowSize.x - nextSize.x) / 2),
-			pos.y + this.options.offset[1] -((this.windowSize.y - nextSize.y) / 2)
-		);
+		var y        = pos.y + this.options.offset[1] -((this.windowSize.y - nextSize.y) / 2)
+		
+		if (this.windowSize.x > this.options.altsize[0]){
+			var x = pos.x + this.options.offset[0] -((this.windowSize.x - nextSize.x) / 2);
+		} else {
+			var x = pos.x + this.options.offset[0] - (this.windowSize.x - nextSize.x);
+		}
+		
+		this.fx.start(x, y);
+		
 		this.fadeSlides(coords);
 		//this.resizeSlides(coords, false);
 		
 		this.fireEvent('navigate', coords);
 		
 		return true;
+	},
+	
+	
+	// Utility methods for navigating across quickly
+	up: function(e){
+		e.preventDefault();
+		this.navigate(0, -1);
+	},
+	down: function(e){
+		e.preventDefault();
+		this.navigate(0, 1);
+	},
+	left: function(e){
+		e.preventDefault();
+		this.navigate(-1, 0);
+	},
+	right: function(e){
+		e.preventDefault();
+		this.navigate(1, 0);
 	},
 	
 	fadeSlides: function(coords){
@@ -237,9 +263,17 @@ var Portfolio = new Class({
 		var imgSizeY = this.el.getElement('ul li ul li').getSize().y;
 		var peekFactorX = 0.04 * (this.windowSize.x / 1280).pow(2);
 		var peekFactorY = 0.04 * (this.windowSize.y / 1024).pow(2);
+		var marginBottom = ((this.windowSize.y - imgSizeY) / 2) - (imgSizeY * peekFactorY);
 		
-		$$('#main ul li ul li').setStyle('margin-right', ((this.windowSize.x - imgSizeX) / 2) - (imgSizeX * peekFactorX));
-		$$('#main ul li ul li').setStyle('margin-bottom', ((this.windowSize.y - imgSizeY) / 2) - (imgSizeY * peekFactorY));
+		if (this.windowSize.x > this.options.altsize[0]) {
+			var marginRight = ((this.windowSize.x - imgSizeX) / 2) - (imgSizeX * peekFactorX);
+		} else {
+			var marginRight = 0;
+		}
+		
+		
+		$$('#main ul li ul li').setStyle('margin-right', marginRight);
+		$$('#main ul li ul li').setStyle('margin-bottom', marginBottom);
 	},
 	
 	getProgressPercent: function(){
