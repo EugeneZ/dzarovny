@@ -25,6 +25,14 @@ nav ul > li > ul > li a:visited { font-size: 1.3em; color: #666; } */
 #main ul > li > ul > li { width: 796px; float: left; margin-right: 20em; margin-bottom: 10em; background:#000;}
 #main ul > li > ul > li img { vertical-align: middle; }
 #main ul > li > ul > li.spacer { height: 1600px;}
+
+.aboutpage {  padding: 5% 8%; }
+.page { height:560px; background:white; background-image:url("../images/bg-parchment.jpg"); background-repeat:repeat;}
+
+
+a.tooltip span {display:none; padding:2px 3px; margin-left:8px; width:130px;}
+a.tooltip:hover span{display:inline; position:absolute; background-color:black; border:1px solid #cccccc; color:#FFF;}
+.col1 { float:left; margin-right:5%; margin-bottom:5%; width:30%; height:100%; }
 /* three per row max, not needed #main ul > li > ul > li:nth-child(3n+1) { clear: left; } */
 
 #label { height:2em; width:inherit; margin-top:5em; }

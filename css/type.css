@@ -5,12 +5,24 @@ html { font-size: 62.5%; background-color: #1C1C1C; background-attachment: fixed
 body { font-family: 'PT Serif', Georgia, serif; color: #FFF;  }
 
 h1, h2, h3 { font-weight: bold; color: #FFF; }
-
+h4, h5, h6 { color:black; line-height:1.7em;  }
 h1 { font-size: 4em; }
 h2 { font-size: 3em; }
-h3 { font-size: 1.6em; }
+h3 { font-size: 1.6em; 
+}
+h4 { font-size: 2.2em; margin-bottom:1em; }
+h5 { font-size: 1.3em; }
+h6 {font-size:1.6em; }
 
-p { font-size: 2em; line-height: 2em; padding: 8% 10%; }
+
+.list-heading { font-size:1.3em; color:black; }
+span.links { font-size:1.6em; font-weight:bold; margin-top: 2em; float:left; color:red; margin-right:3em; z-index:100; }
+span.links:hover { color:black; }
+
+#main ul > li > ul > li > div > div > ul > li {color:black;}
+
+p { font-size: 1.6em; line-height: 1.8em; color:black; }
+p.sm { float:left; }
 
 nav ul li a:link,
 nav ul li a:visited { text-decoration: none; color: #666; font-size: 1.8em; font-style:italic; line-height: 1.6em; }

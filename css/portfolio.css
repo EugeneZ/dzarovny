@@ -39,7 +39,8 @@ body.js #navWrapper a span.percent { float: left; display: inline-block; margin-
 body.js #navWrapper nav ul li a span { font-family: Georgia, serif; }
 
 body.js #portfolio ul > li > ul > li > a { display:block; position:relative; z-index: 1; }
-body.js #portfolio ul > li > ul > li > div { position:absolute; z-index: 2; top:0px; right: 0px; left:0px; bottom: 0px; background-color:rgba(0,0,0,0.9); overflow-y:auto; overflow-x:hidden; }
+body.js #portfolio ul > li > ul > li > div { position:absolute; z-index: 2; top:0px; right: 0px; left:0px; bottom: 0px; padding:8% 12%; background-color:rgb(225,225,225,); background-image:url("../images/bg-parchment.jpg"); background-repeat:repeat; overflow-y:auto; overflow-x:hidden; }
+
 /*body.js #portfolio ul > li > ul > li > div { -moz-column-count: 2; -moz-column-gap: 5%; -webkit-column-count: 2; -webkit-column-gap: 5%; column-count: 2; column-gap: 5%; }*/
 
 body.js .left  		   { display:block; z-index:6; height:100%; width:25%;  left:0px; top:0px; position:absolute; }
