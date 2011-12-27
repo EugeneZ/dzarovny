@@ -8,7 +8,8 @@ var Portfolio = new Class({
 		slides      : 'li',
 		offset      : [0, 0],
 		link        : 'cancel',
-		instructions: ''
+		instructions: '',
+		altsize     : [1024, 768]
 	},
 	initialize: function(el, options){
 		this.setOptions(options);
@@ -132,10 +133,16 @@ var Portfolio = new Class({
 		var nextSize = next.getSize();
 		var pos      = next.getPosition();
 		
-		this.fx.start(
-			pos.x + this.options.offset[0] -((this.windowSize.x - nextSize.x) / 2),
-			pos.y + this.options.offset[1] -((this.windowSize.y - nextSize.y) / 2)
-		);
+		var y        = pos.y + this.options.offset[1] -((this.windowSize.y - nextSize.y) / 2)
+		
+		if (this.windowSize.x > this.options.altsize[0]){
+			var x = pos.x + this.options.offset[0] -((this.windowSize.x - nextSize.x) / 2);
+		} else {
+			var x = pos.x + this.options.offset[0] - (this.windowSize.x - nextSize.x);
+		}
+		
+		this.fx.start(x, y);
+		
 		this.fadeSlides(coords);
 		//this.resizeSlides(coords, false);
 		
@@ -237,9 +244,17 @@ var Portfolio = new Class({
 		var imgSizeY = this.el.getElement('ul li ul li').getSize().y;
 		var peekFactorX = 0.04 * (this.windowSize.x / 1280).pow(2);
 		var peekFactorY = 0.04 * (this.windowSize.y / 1024).pow(2);
+		var marginBottom = ((this.windowSize.y - imgSizeY) / 2) - (imgSizeY * peekFactorY);
 		
-		$$('#main ul li ul li').setStyle('margin-right', ((this.windowSize.x - imgSizeX) / 2) - (imgSizeX * peekFactorX));
-		$$('#main ul li ul li').setStyle('margin-bottom', ((this.windowSize.y - imgSizeY) / 2) - (imgSizeY * peekFactorY));
+		if (this.windowSize.x > this.options.altsize[0]) {
+			var marginRight = ((this.windowSize.x - imgSizeX) / 2) - (imgSizeX * peekFactorX);
+		} else {
+			var marginRight = 0;
+		}
+		
+		
+		$$('#main ul li ul li').setStyle('margin-right', marginRight);
+		$$('#main ul li ul li').setStyle('margin-bottom', marginBottom);
 	},
 	
 	getProgressPercent: function(){
