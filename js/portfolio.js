@@ -4,7 +4,7 @@ var Portfolio = new Class({
 	options: {
 		target      : window,
 		classes     : ['active', 'inactive'],
-		categories  : 'ul li ul',
+		categories  : 'ul > li > ul',
 		slides      : 'li',
 		offset      : [0, 0],
 		link        : 'cancel',
@@ -41,7 +41,7 @@ var Portfolio = new Class({
 		this.windowSize = window.getSize();
 		this.categories = this.el.getElements(this.options.categories);
 		this.categories.each(function(category){
-			category.slides = category.getElements(this.options.slides);
+			category.slides = category.getChildren(this.options.slides);
 			category.slides.set('tween', { 'link': this.options.link });
 			category.slides.set('morph', { 'link': this.options.link });
 		}.bind(this));
@@ -280,8 +280,8 @@ var Portfolio = new Class({
 			var marginRight = 0;
 		}
 		
-		$$('#main ul li ul li').setStyle('margin-right', marginRight);
-		$$('#main ul li ul li').setStyle('margin-bottom', marginBottom);
+		$$('#main ul > li > ul > li').setStyle('margin-right', marginRight);
+		$$('#main ul > li > ul > li').setStyle('margin-bottom', marginBottom);
 		
 		this.configureWidths();
 	},

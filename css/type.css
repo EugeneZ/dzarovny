@@ -1,7 +1,7 @@
 /* WARNING: If you change this background image, don't forget to change it at the bottom of core.js as well */
 html { background-image:url("../images/black_paper.png"); }
 
-html { font-size: 62.5%; background-color: #1C1C1C;  background-attachment: fixed; }
+html { font-size: 62.5%; background-color: #1C1C1C; background-attachment: fixed; }
 body { font-family: 'PT Serif', Georgia, serif; color: #FFF;  }
 
 h1, h2, h3 { font-weight: bold; color: #FFF; }
@@ -10,7 +10,7 @@ h1 { font-size: 4em; }
 h2 { font-size: 3em; }
 h3 { font-size: 1.6em; }
 
-p { font-size: 2em; line-height: 2em; position:absolute; top:0px; right: 0px; left:0px; bottom: 0px; padding: 8% 10%; background-color:rgba(0,0,0,0.9) }
+p { font-size: 2em; line-height: 2em; padding: 8% 10%; }
 
 nav ul li a:link,
 nav ul li a:visited { text-decoration: none; color: #666; font-size: 1.8em; font-style:italic; line-height: 1.6em; }
