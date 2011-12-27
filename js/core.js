@@ -91,7 +91,7 @@ var DZarovny = {
 	},
 	
 	initProgress: function(){
-		DZarovny.portfolio.el.getElements('ul li ul').each(function(category){
+		DZarovny.portfolio.el.getElements('ul > li > ul').each(function(category){
 			var menuItem = DZarovny.navEl.getElement('a[href$=' + category.getPrevious().getElement('a').get('name') + ']');
 			var imgs = category.getElements('img');
 			var total = 0;
@@ -128,10 +128,10 @@ var DZarovny = {
 		
 		DZarovny.portfolio.el.getElements('img').each(function(img){
 			if (!img.retrieve('DZarovny.infotab')){
-				var text    = img.getElement('! a ~ p');
+				var text    = img.getElement('! a ~ div');
 				if (text){
 					text.fade('hide');
-					var infotab = new Element('div.infotab').inject(text.getParent(), 'top')
+					var infotab = new Element('span.infotab').inject(text.getParent(), 'top')
 						.addEvents({
 							'mouseenter': function(){
 								text.fade('in');
