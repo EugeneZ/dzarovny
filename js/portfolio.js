@@ -21,7 +21,7 @@ var Portfolio = new Class({
 		
 		this.setCache();
 		this.attachMenu();
-		this.attachKeyboard();
+		this.attachNavEvents();
 		this.attachEdges();
 		this.configureMargins();
 		
@@ -67,7 +67,7 @@ var Portfolio = new Class({
 		}.bind(this));
 	},
 	
-	attachKeyboard: function(){
+	attachNavEvents: function(){
 		this.keyboard = new Keyboard({
 			'events': {
 				'up'   : this.up,
@@ -76,6 +76,14 @@ var Portfolio = new Class({
 				'right': this.right
 			}
 		}).activate();
+		
+		/*document.addEvent('mousewheel', function(e){
+			if (e.wheel > 0){
+				this.left();
+			} else if (e.wheel < 0){
+				this.right();
+			}
+		}.bind(this));*/
 	},
 	
 	attachEdges: function(){
@@ -154,19 +162,19 @@ var Portfolio = new Class({
 	
 	// Utility methods for navigating across quickly
 	up: function(e){
-		e.preventDefault();
+		if (e) e.preventDefault();
 		this.navigate(0, -1);
 	},
 	down: function(e){
-		e.preventDefault();
+		if (e) e.preventDefault();
 		this.navigate(0, 1);
 	},
 	left: function(e){
-		e.preventDefault();
+		if (e) e.preventDefault();
 		this.navigate(-1, 0);
 	},
 	right: function(e){
-		e.preventDefault();
+		if (e) e.preventDefault();
 		this.navigate(1, 0);
 	},
 	

@@ -1,8 +1,8 @@
 var DZarovny = {
 	// variables and caches
 	sampleImage: false,
-	loaded: false,
-	navEl : null,
+	loaded     : false,
+	navEl      : null,
 	
 	domready: function(){
 		document.getElement('body').addClass('js');
@@ -62,23 +62,21 @@ var DZarovny = {
 		var logo       = DZarovny.navEl.getElement('nav h1');
 		var menu       = DZarovny.navEl.getElement('nav ul').setStyle('position', 'absolute').setStyle('top', 0);
 		var windowSize = window.getSize();
-		var menuSize   = DZarovny.navEl.measure(function(){ return menu.getSize().y; });
-		var logoMargin = (windowSize.y - logo.getSize().y) / 2;
-		var menuMargin = (windowSize.y - menuSize) / 2;
-
-		logo.setStyle('margin-top', logoMargin);
-		menu.setStyle('margin-top', menuMargin);
 		
 		if (firstrun){ 
 			logo.fade('hide');
 		}
 		
 		if (DZarovny.sampleImage) {
-			var imageSize  = DZarovny.sampleImage.getElement('!li').getSize().x;
-			var navWidth   = (windowSize.x - imageSize) / 2;
+			var imageSize  = DZarovny.sampleImage.getElement('!li').getSize();
+			var navWidth   = ((windowSize.x - imageSize.x) / 2);
+			var navMargin  = ((windowSize.y - imageSize.y) / 2) - (imageSize.y * 0.2); //<-- percent offset from the top of the image
 			
 			if (firstrun){
-				DZarovny.navEl.setStyle('width', navWidth);
+				DZarovny.navEl.setStyles({
+					'width'     : navWidth,
+					'margin-top': navMargin
+				});
 				logo.fade('in');
 			} else {
 				DZarovny.navEl.tween('width', navWidth);
