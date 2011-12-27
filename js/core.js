@@ -8,14 +8,13 @@ var DZarovny = {
 		document.getElement('body').addClass('js');
 		DZarovny.navEl        = document.id('navWrapper');
 		DZarovny.portfolio    = new Portfolio('portfolio', { 'instructions': 
-			'Use keyboard to navigate.</br>' +
-			'Lower right corner for info.'
+			'<img src="images/Style/keys.png"/></br>Use your keyboard arrows to navigate and hold the spacebar to display info.'
 		}); //<-- put html above to have it appear in the instructions
 		DZarovny.nav          = new Navigation('nav');
 		DZarovny.nav.progress.fade('hide').store('DZarovny.firstclick', false);
 		
 		DZarovny.portfolio.addEvent('navigate', function(x, y){
-			var progressEl    = DZarovny.nav.progress.getElement('#longbar');
+			var progressEl    = DZarovny.nav.progress.getElement('#bullet');
 			var progressWidth = progressEl.getParent().getSize().x;
 			var percent       = DZarovny.portfolio.getProgressPercent();
 			progressEl.tween('margin-left', (progressWidth * percent).round() + ((DZarovny.portfolio.getProgressStep() * progressWidth) * percent).ceil().limit(0, progressWidth - progressEl.getSize().x));

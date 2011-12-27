@@ -23,16 +23,25 @@ nav ul li ul li a:visited { font-size: 1.3em; color: #666; } */
 #main ul li a:link,
 #main ul li a:visited {}
 #main ul li ul { clear: both; }
-#main ul li ul li { min-width: 796px; max-width: 796px; min-height: 500px; float: left; margin-right: 20em; margin-bottom: 10em; background:#000;}
+#main ul li ul li { max-width: 796px; float: left; margin-right: 20em; margin-bottom: 10em; background:#000;}
 #main ul li ul li img { vertical-align: middle; }
 #main ul li ul li.spacer { height: 1600px;}
 /* three per row max, not needed #main ul li ul li:nth-child(3n+1) { clear: left; } */
 
 
-.infotab { background-image:url("../images/Style/Info_tab.png"); bottom:0; right:0; position:absolute; height:65px; width:65px; z-index: 10; }
-#label { height:2em; width:inherit; padding-top:2em; }
-#progress { width: inherit; height:18px; background-image:url("../images/Style/bar.png"); background-repeat:repeat-x; margin-top:18px; }
-#longbar { width:7px; height:18px; z-index:10; margin-top:-4px; position:relative; }
+.left  		 { display:block; z-index:6; height:100%; width:20%;  left:0px; top:0px; position:absolute; }
+.up   		 { display:block; z-index:4; height:20%;  width:100%; top:0px; position:absolute; }
+.down  		 { display:block; z-index:4; height:20%;  width:100%; bottom:0px; position:absolute; }
+.right 		 { display:block; z-index:6; height:100%; width:20%;  right:0px;  top:0px; position:absolute; }
+.left:hover  { background-image:url("../images/Style/tab_left.png");  background-repeat: no-repeat; background-position:left center; }
+.up:hover 	 { background-image:url("../images/Style/tab_up.png");    background-repeat: no-repeat; background-position:center top; }
+.down:hover  { background-image:url("../images/Style/tab_down.png");  background-repeat: no-repeat; background-position:center bottom; }
+.right:hover { background-image:url("../images/Style/tab_right.png"); background-repeat: no-repeat; background-position:right center; }
+
+.infotab { background-image:url("../images/Style/Info_tab.png"); bottom: 3%; right:0; position:absolute; height:27px; width:45px; z-index: 10; }
+#label { height:2em; width:inherit; margin-top:5em; }
+#progress { width: 100%; height:2px; margin-top:16px; background-image:url("../images/Style/bar.png"); background-repeat:repeat-x; }
+#bullet { width:12px; height:1px; margin-top:-0.5em; z-index:10; overflow:visible; position:absolute; }
 
 
 /*footer { position: absolute; bottom: 0; margin-left: 20.83333%; width: 100%; padding: 1em; background-color: #fff; font-size: 1.5em; }*/ footer { display: none; }
