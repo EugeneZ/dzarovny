@@ -1,6 +1,6 @@
 var Portfolio = new Class({
 	Implements: [Options, Events],
-	Binds: ['navigate', 'go', 'find', 'configureMargins', 'setCache'],
+	Binds: ['navigate', 'go', 'find', 'configureMargins', 'setCache', 'up', 'down', 'left', 'right'],
 	options: {
 		target      : window,
 		classes     : ['active', 'inactive'],
@@ -22,6 +22,7 @@ var Portfolio = new Class({
 		this.setCache();
 		this.attachMenu();
 		this.attachKeyboard();
+		this.attachEdges();
 		this.configureMargins();
 		
 		this.fx.set(0,0);
@@ -69,24 +70,23 @@ var Portfolio = new Class({
 	attachKeyboard: function(){
 		this.keyboard = new Keyboard({
 			'events': {
-				'up': function(e){
-					e.preventDefault();
-					this.navigate(0, -1);
-				}.bind(this),
-				'down': function(e){
-					e.preventDefault();
-					this.navigate(0, 1);
-				}.bind(this),
-				'left': function(e){
-					e.preventDefault();
-					this.navigate(-1, 0);
-				}.bind(this),
-				'right': function(e){
-					e.preventDefault();
-					this.navigate(1, 0);
-				}.bind(this)
+				'up'   : this.up,
+				'down' : this.down,
+				'left' : this.left,
+				'right': this.right
 			}
 		}).activate();
+	},
+	
+	attachEdges: function(){
+		this.el.getElements('ul > li > ul > li > a').each(function(a){
+			a.adopt(
+				new Element('a.left' ).addEvent('click', this.left),
+				new Element('a.up'   ).addEvent('click', this.up),
+				new Element('a.down' ).addEvent('click', this.down),
+				new Element('a.right').addEvent('click', this.right)
+			)
+		}.bind(this));
 	},
 	
 	// Scrolls
@@ -149,6 +149,25 @@ var Portfolio = new Class({
 		this.fireEvent('navigate', coords);
 		
 		return true;
+	},
+	
+	
+	// Utility methods for navigating across quickly
+	up: function(e){
+		e.preventDefault();
+		this.navigate(0, -1);
+	},
+	down: function(e){
+		e.preventDefault();
+		this.navigate(0, 1);
+	},
+	left: function(e){
+		e.preventDefault();
+		this.navigate(-1, 0);
+	},
+	right: function(e){
+		e.preventDefault();
+		this.navigate(1, 0);
 	},
 	
 	fadeSlides: function(coords){
