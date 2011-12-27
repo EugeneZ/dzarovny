@@ -267,8 +267,9 @@ var Portfolio = new Class({
 	},
 	
 	configureMargins: function(){
-		var imgSizeX = this.el.getElement('ul li ul li').getSize().x;
-		var imgSizeY = this.el.getElement('ul li ul li').getSize().y;
+		var first = this.categories[0].slides[0];
+		var imgSizeX = first.getSize().x;
+		var imgSizeY = first.getSize().y;
 		var peekFactorX = 0.04 * (this.windowSize.x / 1280).pow(2);
 		var peekFactorY = 0.04 * (this.windowSize.y / 1024).pow(2);
 		var marginBottom = ((this.windowSize.y - imgSizeY) / 2) - (imgSizeY * peekFactorY);
@@ -279,9 +280,22 @@ var Portfolio = new Class({
 			var marginRight = 0;
 		}
 		
-		
 		$$('#main ul li ul li').setStyle('margin-right', marginRight);
 		$$('#main ul li ul li').setStyle('margin-bottom', marginBottom);
+		
+		this.configureWidths();
+	},
+	
+	configureWidths: function(){
+		this.categories.each(function(category){
+			category.slides.each(function(slide){
+				var size  = slide.getSize();
+				if (size.y > this.windowSize.y){
+					var ratio = size.x / size.y;
+					slide.setStyle('width', (this.windowSize.y * ratio) * .8);
+				}
+			}.bind(this));
+		}.bind(this));
 	},
 	
 	getProgressPercent: function(){
