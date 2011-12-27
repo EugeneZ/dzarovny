@@ -22,7 +22,7 @@ nav ul li ul li a:visited { font-size: 1.3em; color: #666; } */
 #main ul li a:link,
 #main ul li a:visited {}
 #main ul li ul { clear: both; }
-#main ul li ul li { max-width: 796px; float: left; margin-right: 20em; margin-bottom: 10em; background:#000;}
+#main ul li ul li { width: 796px; float: left; margin-right: 20em; margin-bottom: 10em; background:#000;}
 #main ul li ul li img { vertical-align: middle; }
 #main ul li ul li.spacer { height: 1600px;}
 /* three per row max, not needed #main ul li ul li:nth-child(3n+1) { clear: left; } */
