@@ -38,16 +38,18 @@ body.js .zoomNormal { max-width: 100%; margin: 0%; }
 body.js #navWrapper a span.percent { float: left; display: inline-block; margin-right: 5px; } 
 body.js #navWrapper nav ul li a span { font-family: Georgia, serif; }
 
-body.js #portfolio ul > li > ul > li > a { position:relative; z-index: 1; }
+body.js #portfolio ul > li > ul > li > a { display:block; position:relative; z-index: 1; }
 body.js #portfolio ul > li > ul > li > div { position:absolute; z-index: 2; top:0px; right: 0px; left:0px; bottom: 0px; background-color:rgba(0,0,0,0.9); overflow-y:auto; overflow-x:hidden; }
 /*body.js #portfolio ul > li > ul > li > div { -moz-column-count: 2; -moz-column-gap: 5%; -webkit-column-count: 2; -webkit-column-gap: 5%; column-count: 2; column-gap: 5%; }*/
 
-body.js .left  		 { display:block; z-index:6; height:100%; width:20%;  left:0px; top:0px; position:absolute; }
-body.js .up   		 { display:block; z-index:4; height:20%;  width:100%; top:0px; position:absolute; }
-body.js .down  		 { display:block; z-index:4; height:20%;  width:100%; bottom:0px; position:absolute; }
-body.js .right 		 { display:block; z-index:6; height:100%; width:20%;  right:0px;  top:0px; position:absolute; }
-body.js .left:hover  { background-image:url("../images/Style/tab_left.png");  background-repeat: no-repeat; background-position:left center; }
-body.js .up:hover 	 { background-image:url("../images/Style/tab_up.png");    background-repeat: no-repeat; background-position:center top; }
-body.js .down:hover  { background-image:url("../images/Style/tab_down.png");  background-repeat: no-repeat; background-position:center bottom; }
-body.js .right:hover { background-image:url("../images/Style/tab_right.png"); background-repeat: no-repeat; background-position:right center; }
-body.js .infotab     { background-image:url("../images/Style/Info_tab.png"); bottom: 3%; right:0; position:absolute; height:27px; width:45px; z-index: 10; }
+body.js .left  		   { display:block; z-index:6; height:100%; width:25%;  left:0px; top:0px; position:absolute; }
+body.js .up   		   { display:block; z-index:4; height:30%;  width:100%; top:0px; position:absolute; }
+body.js .down  		   { display:block; z-index:4; height:30%;  width:100%; bottom:0px; position:absolute; }
+body.js .right 		   { display:block; z-index:6; height:100%; width:25%;  right:0px;  top:0px; position:absolute; }
+body.js .left:hover    { cursor:pointer; background-image:url("../images/Style/tab_left.png");  background-repeat: no-repeat; background-position:left center; }
+body.js .up:hover 	   { cursor:pointer; background-image:url("../images/Style/tab_up.png");    background-repeat: no-repeat; background-position:center top; }
+body.js .down:hover    { cursor:pointer; background-image:url("../images/Style/tab_down.png");  background-repeat: no-repeat; background-position:center bottom; }
+body.js .right:hover   { cursor:pointer; background-image:url("../images/Style/tab_right.png"); background-repeat: no-repeat; background-position:right center; }
+body.js .infotab:hover { cursor:pointer; background-image:url("../images/Style/Info_tab.png");  }
+body.js .infotab       { background-image:url("../images/Style/Info_tab2.png"); bottom: 3%; right:0; position:absolute; height:27px; width:45px; z-index: 10;}
+
