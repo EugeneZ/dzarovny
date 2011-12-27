@@ -70,10 +70,22 @@ var Portfolio = new Class({
 	attachNavEvents: function(){
 		this.keyboard = new Keyboard({
 			'events': {
-				'up'   : this.up,
-				'down' : this.down,
-				'left' : this.left,
-				'right': this.right
+				'up'   : function(e){
+					DZarovny.upOrDownPressed = true;
+					this.up(e);
+				}.bind(this),
+				'down' : function(e){
+					DZarovny.upOrDownPressed = true;
+					this.down(e);
+				}.bind(this),
+				'left' : function(e){
+					DZarovny.leftOrRightPressed = true;
+					this.left(e);
+				}.bind(this),
+				'right': function(e){
+					DZarovny.leftOrRightPressed = true;
+					this.right(e);
+				}.bind(this)
 			}
 		}).activate();
 		
@@ -113,7 +125,7 @@ var Portfolio = new Class({
 		}
 		
 		// on first use of the keyboard, we can destroy the instructions.
-		if (typeOf(this.instructions) == 'element') {
+		if (typeOf(this.instructions) == 'element' && DZarovny && DZarovny.spacePressed && DZarovny.leftOrRightPressed && DZarovny.upOrDownPressed) {
 			this.instructions.destroy();
 			this.instructions = true;
 		}

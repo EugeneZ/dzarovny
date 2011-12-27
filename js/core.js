@@ -63,7 +63,7 @@ var DZarovny = {
 		var menu       = DZarovny.navEl.getElement('nav ul').setStyle('position', 'absolute').setStyle('top', 0);
 		var windowSize = window.getSize();
 		
-		if (firstrun){ 
+		if (firstrun){
 			logo.fade('hide');
 		}
 		
@@ -131,13 +131,16 @@ var DZarovny = {
 				var text    = img.getElement('! a ~ div');
 				if (text){
 					text.fade('hide');
-					var infotab = new Element('span.infotab').inject(text.getParent(), 'top')
+					var infotab = new Element('span.infotab').inject(text.getParent(), 'top').store('DZarovny.text', text)
 						.addEvents({
-							'mouseenter': function(){
-								text.fade('in');
-							},
-							'mouseleave': function(){
-								text.fade('out');
+							'click': function(){
+								if (!this.retrieve('DZarovny.clicked', false)){
+									this.store('DZarovny.clicked', true);
+									text.fade('in');
+								} else {
+									this.store('DZarovny.clicked', false);
+									text.fade('out');
+								}
 							}
 						});
 					
@@ -154,6 +157,7 @@ var DZarovny = {
 				if (!DZarovny.keydown){
 					DZarovny.moreInfoShow();
 					DZarovny.keydown = true;
+					DZarovny.spacePressed = true;
 				}
 			}
 		});
@@ -169,11 +173,19 @@ var DZarovny = {
 	},
 	
 	moreInfoShow: function(){
-		DZarovny.portfolio.getCurrentSlide().getElement('div.infotab').fireEvent('mouseenter');
+		var el = DZarovny.portfolio.getCurrentSlide().getElement('span.infotab');
+		if (el && !el.retrieve('DZarovny.clicked', false)){
+			el.store('DZarovny.clicked', true);
+			el.retrieve('DZarovny.text').fade('in');
+		}
 	},
 	
 	moreInfoHide: function(){
-		DZarovny.portfolio.getCurrentSlide().getElement('div.infotab').fireEvent('mouseleave');
+		var el = DZarovny.portfolio.getCurrentSlide().getElement('span.infotab');
+		if (el && el.retrieve('DZarovny.clicked', false)){
+			el.store('DZarovny.clicked', false);
+			el.retrieve('DZarovny.text').fade('out');
+		}
 	}
 };
 
